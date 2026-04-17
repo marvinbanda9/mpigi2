@@ -8,7 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
 
-<style>:root {
+<style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
     --primary:#0b5ed7;
     --accent:#4dabf7;
     --bg:#f4f7fb;
@@ -52,7 +54,7 @@ body.dark-mode textarea {
     box-sizing:border-box;
 }
 
-/* GLOBAL IMAGE FIX (REDUCED SPACING) */
+/* GLOBAL IMAGE FIX */
 img {
     margin: 0;
     padding: 0;
@@ -60,12 +62,15 @@ img {
     display: block;
 }
 
+/* BODY TYPOGRAPHY */
 body {
-    font-family:'Inter', sans-serif; /* 👈 better reading font */
+    font-family: 'Plus Jakarta Sans', sans-serif;
     background:var(--bg);
     color:var(--text);
     line-height:1.75;
-    font-size:15px;
+    font-size:16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* HEADER */
@@ -88,20 +93,21 @@ header {
     width:70px;
 }
 
-/* MAIN TITLE (strong + clean) */
+/* MAIN TITLE */
 .header-text h1 {
-    font-family:'Poppins', sans-serif;
-    font-size:34px;
+    font-family: 'Playfair Display', serif;
+    font-size:38px;
     font-weight:700;
-    letter-spacing:-0.5px;
+    letter-spacing:-0.8px;
+    line-height:1.2;
 }
 
 /* SUBTEXT */
 .header-text p {
-    font-family:'Inter', sans-serif;
     font-size:15px;
     opacity:0.9;
 }
+
 /* NAV */
 nav {
     position:sticky;
@@ -164,33 +170,32 @@ nav {
     cursor:pointer;
 }
 
+/* CONTAINER */
 .container {
-    max-width:720px; /* 👈 narrower content */
-    margin:40px auto; /* more breathing space */
-    padding:0 16px; /* safe spacing on small screens */
+    max-width:720px;
+    margin:40px auto;
+    padding:0 16px;
 }
 
-/* POSTS - OPTION 2 (FLAT / NO CARDS) */
+/* POSTS */
 .post {
     margin-bottom:30px;
     padding-bottom:20px;
     border-bottom:1px solid #ddd;
 }
 
-.post:hover {
-    transform:none; /* remove card hover effect */
-}
-
 .post img {
     width:100%;
-    border-radius:0; /* remove rounded look */
     margin:0 0 10px 0;
 }
 
 .post h2 {
     color:var(--primary);
     margin-bottom:6px;
-    font-size:20px;
+    font-size:22px;
+    font-weight:600;
+    letter-spacing:-0.3px;
+    line-height:1.3;
 }
 
 .post h2:hover {
@@ -199,34 +204,31 @@ nav {
 }
 
 .meta {
-    font-size:13px;
-    color:gray;
+    font-size:12.5px;
+    color:rgba(100,100,100,0.85);
+    font-style:normal;
+    letter-spacing:0.2px;
     margin-bottom:6px;
-    font-style:italic;
 }
 
 .post p {
-    line-height:1.6;
-    margin-bottom:8px;
-    font-size:14px;
+    line-height:1.8;
+    margin-bottom:10px;
+    font-size:15px;
 }
 
+/* BLOCKQUOTE */
 blockquote {
-    background:#eef4ff;
-    border-left:3px solid var(--primary);
-    padding:10px;
-    margin:12px 0;
-    border-radius:4px;
-}
-blockquote {
-    background:#eef4ff;
-    border-left:3px solid var(--primary);
-    padding:10px;
-    margin:12px 0;
-    border-radius:6px;
+    background:rgba(11, 94, 215, 0.08);
+    border-left:4px solid var(--primary);
+    padding:12px 14px;
+    margin:14px 0;
+    border-radius:8px;
+    font-size:14.5px;
+    line-height:1.7;
 }
 
-/* SCROLL + CHAT BUTTONS */
+/* SCROLL + CHAT */
 #scroll-feedback {
     position: fixed;
     bottom: 20px;
@@ -257,6 +259,7 @@ blockquote {
     display: none;
 }
 
+/* CHAT POPUP */
 #chat-popup {
     display:none;
     position: fixed;
@@ -344,6 +347,7 @@ footer {
 #themeToggle:hover {
     background:var(--accent);
 }
+
 /* BOTTOM SECTION */
 .bottom-section {
     background:linear-gradient(135deg,#0b5ed7,#084298);
@@ -360,6 +364,8 @@ footer {
     align-items:center;
     flex-wrap:wrap;
     gap:20px;
+    flex-direction:column;
+    text-align:center;
 }
 
 /* BRAND */
@@ -382,6 +388,7 @@ footer {
     display:flex;
     flex-wrap:wrap;
     gap:15px;
+    justify-content:center;
 }
 
 .bottom-links a {
@@ -395,14 +402,6 @@ footer {
 .bottom-links a:hover {
     opacity:1;
     text-decoration:underline;
-}
-.bottom-content {
-    flex-direction:column;
-    text-align:center;
-}
-
-.bottom-links {
-    justify-content:center;
 }</style>
 
 
