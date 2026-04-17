@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medicare Mpigi Blog</title>
+<link rel="icon" type="image/png" href="https://medicarehospital-mpigi.org/wp-content/uploads/2020/03/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+
+<style>:root {
+    --primary:#0b5ed7;
+    --accent:#4dabf7;
+    --bg:#f4f7fb;
+    --text:#1f2d3d;
+}
+
+/* DARK MODE */
+body.dark-mode {
+    --bg:#0f172a;
+    --text:#e2e8f0;
+    --primary:#4dabf7;
+}
+
+body.dark-mode nav {
+    background:rgba(15,23,42,0.9);
+}
+
+body.dark-mode .post {
+    background:#1e293b;
+}
+
+body.dark-mode blockquote {
+    background:#1e3a8a;
+}
+
+body.dark-mode #chat-popup {
+    background:#1e293b;
+    color:white;
+}
+
+body.dark-mode textarea {
+    background:#0f172a;
+    color:white;
+    border:1px solid #334155;
+}
+
+/* RESET */
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* GLOBAL IMAGE FIX (REDUCED SPACING) */
+img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
+}
+
+body {
+    font-family:'Inter', sans-serif; /* 👈 better reading font */
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.75;
+    font-size:15px;
+}
+
+/* HEADER */
+header {
+    background:linear-gradient(rgba(11,94,215,0.85),rgba(11,94,215,0.85)),
+    url('https://images.unsplash.com/photo-1584515933487-779824d29309');
+    background-size:cover;
+    color:white;
+    padding:60px 20px;
+}
+
+.header-content,
+.nav-container,
+.bottom-content {
+    max-width:900px;
+    margin:auto;
+}
+
+.header-content img {
+    width:70px;
+}
+
+/* MAIN TITLE (strong + clean) */
+.header-text h1 {
+    font-family:'Poppins', sans-serif;
+    font-size:34px;
+    font-weight:700;
+    letter-spacing:-0.5px;
+}
+
+/* SUBTEXT */
+.header-text p {
+    font-family:'Inter', sans-serif;
+    font-size:15px;
+    opacity:0.9;
+}
+/* NAV */
+nav {
+    position:sticky;
+    top:0;
+    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,0.9);
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    z-index:1000;
+}
+
+.nav-container {
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px;
+}
+
+.logo-area {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:600;
+}
+
+.logo-area img {
+    width:40px;
+}
+
+.menu {
+    display:flex;
+    gap:25px;
+}
+
+.menu a {
+    text-decoration:none;
+    color:var(--text);
+    position:relative;
+}
+
+.menu a::after {
+    content:"";
+    position:absolute;
+    width:0;
+    height:2px;
+    background:var(--primary);
+    left:0;
+    bottom:-5px;
+    transition:0.3s;
+}
+
+.menu a:hover::after {
+    width:100%;
+}
+
+.menu-btn {
+    display:none;
+    font-size:24px;
+    cursor:pointer;
+}
+
+.container {
+    max-width:720px; /* 👈 narrower content */
+    margin:40px auto; /* more breathing space */
+    padding:0 16px; /* safe spacing on small screens */
+}
+
+/* POSTS - OPTION 2 (FLAT / NO CARDS) */
+.post {
+    margin-bottom:30px;
+    padding-bottom:20px;
+    border-bottom:1px solid #ddd;
+}
+
+.post:hover {
+    transform:none; /* remove card hover effect */
+}
+
+.post img {
+    width:100%;
+    border-radius:0; /* remove rounded look */
+    margin:0 0 10px 0;
+}
+
+.post h2 {
+    color:var(--primary);
+    margin-bottom:6px;
+    font-size:20px;
+}
+
+.post h2:hover {
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+.meta {
+    font-size:13px;
+    color:gray;
+    margin-bottom:6px;
+    font-style:italic;
+}
+
+.post p {
+    line-height:1.6;
+    margin-bottom:8px;
+    font-size:14px;
+}
+
+blockquote {
+    background:#eef4ff;
+    border-left:3px solid var(--primary);
+    padding:10px;
+    margin:12px 0;
+    border-radius:4px;
+}
+blockquote {
+    background:#eef4ff;
+    border-left:3px solid var(--primary);
+    padding:10px;
+    margin:12px 0;
+    border-radius:6px;
+}
+
+/* SCROLL + CHAT BUTTONS */
+#scroll-feedback {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    z-index: 1000;
+}
+
+#scroll-feedback button {
+    background: rgba(11, 94, 215, 0.2);
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition:0.3s;
+}
+
+#scroll-feedback button:hover {
+    background: rgba(11, 94, 215, 0.4);
+}
+
+#scrollTopBtn {
+    display: none;
+}
+
+#chat-popup {
+    display:none;
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    width: 230px;
+    background:white;
+    border:1px solid #ddd;
+    border-radius:10px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    padding:12px;
+}
+
+#chat-popup h3 {
+    margin-bottom:8px;
+    font-size:15px;
+    color:var(--primary);
+}
+
+#chat-popup textarea {
+    width:100%;
+    resize:none;
+    padding:8px;
+    border-radius:5px;
+    border:1px solid #ccc;
+    margin-bottom:8px;
+}
+
+#chat-popup button {
+    width:100%;
+    padding:7px;
+    background:var(--primary);
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+#chat-popup button:hover {
+    background:var(--accent);
+}
+
+/* FOOTER */
+footer {
+    background:linear-gradient(135deg,#0b5ed7,#084298);
+    color:white;
+    padding:25px 15px;
+    text-align:center;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .header-content {
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .menu {
+        display:none;
+        flex-direction:column;
+        position:absolute;
+        right:0;
+        top:60px;
+        background:white;
+        padding:15px;
+        width:200px;
+        box-shadow:0 8px 15px rgba(0,0,0,0.1);
+    }
+
+    .menu.active { display:flex; }
+    .menu-btn { display:block; }
+}
+
+/* THEME BUTTON */
+#themeToggle {
+    background:var(--primary);
+    color:white;
+    border:none;
+    padding:6px 10px;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+#themeToggle:hover {
+    background:var(--accent);
+}
+/* BOTTOM SECTION */
+.bottom-section {
+    background:linear-gradient(135deg,#0b5ed7,#084298);
+    color:white;
+    padding:30px 15px;
+    margin-top:40px;
+}
+
+.bottom-content {
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+/* BRAND */
+.bottom-brand {
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.bottom-brand img {
+    width:45px;
+}
+
+.bottom-brand h2 {
+    font-size:20px;
+}
+
+/* LINKS */
+.bottom-links {
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.bottom-links a {
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+    opacity:0.9;
+    transition:0.3s;
+}
+
+.bottom-links a:hover {
+    opacity:1;
+    text-decoration:underline;
+}
+.bottom-content {
+    flex-direction:column;
+    text-align:center;
+}
+
+.bottom-links {
+    justify-content:center;
+}</style>
+
+
+
+
+
+
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <img src="https://medicarehospital-mpigi.org/wp-content/uploads/2020/03/logo.png">
+        <div class="header-text">
+            <h1>Medicare Mpigi</h1>
+            <p>Promoting Health Awareness & Community Wellbeing</p>
+        </div>
+    </div>
+</header>
+
+<nav>
+<div class="nav-container">
+    <div class="logo-area">
+        <img src="https://medicarehospital-mpigi.org/wp-content/uploads/2020/03/logo.png">
+        Medicare Mpigi
+    </div>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <div class="menu" id="menu">
+        <a href="#">Home</a>
+
+
+<a href="blog.html">Blog</a>
+
+
+        <a href="#">About</a>
+        <a href="#">Events</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <button onclick="toggleDarkMode()" id="themeToggle">🌙</button>
+</div>
+</nav>
+
+<div class="container">
+
+<!-- POST 1 -->
+<div class="post">
+<img src="https://medicarehospital-mpigi.org/wp-content/uploads/2023/03/PHOTO-2023-02-07-09-17-41-1200x800-1-280x180.jpg">
+<h2>KIRUDDU NATIONAL REFERRAL HOSPITAL RECEIVES A BOOST FROM THE FEDERAL GOVERNEMNT OF GERMAN</h2>
+
+<p>Kampala, 6th -February -2023; The Federal Government of Germany and the free state of Saxony has donated medical equipment worth 160,000 Euros to Kiruddu National Referral Hospital with the aim of improving Health services in Uganda especially in the Intensive Care Unit (ICU).</p>
+
+<p>The equipment donated included 10 ventilators and their accessories were handed over to the Permanent Secretary Ministry of Health, Dr. Diana Atwine by the German Ambassador to Uganda Mathias Schauer in the presence of senior management of Kiruddu Hospital.</p>
+
+<blockquote>“these machines are going to transform lives and help in increasing the number of patients that have been admitted in ICU. These machines being few limits the number of patients admitted in ICU at a time.”</blockquote>
+
+<p>However, she called upon other hospitals to be friendly, and build strong relationships with other countries to enable Uganda fight global threats like antimicrobial resistance.</p>
+
+<p>According to Dr. Charles Kabugo the Director of Kiruddu hospital, through different collaborations Kiruddu NRH has been able to deepen its relations with Uganda. Seven people from Uganda visited a hospital in Germany and it’s ICU which benefited Kiruddu NRH.</p>
+
+<p>This strengthened the relationship which yielded gains such as acquiring the necessary equipment, support and strengthening the relationship between Germany and Uganda on the healthcare front.</p>
+
+<p>“Ventilators are life support machines that take over the breathing process by pumping air into the lungs and it is mostly useful for patients with breathing difficulties and severe critical conditions.” Said Dr. Kabugo.</p>
+
+<p>The German ambassador to Uganda Mathias Schauer said, “The donation of ventilators is a joint action of the Federal Government and the free state of Saxony which will considerably improve intensive medical care at the hospital.”</p>
+
+<p>Stephen Mubiru, Uganda’s ambassador to Germany said, the government of Uganda has a close relationship with the government of the federal republic of Germany. This cooperation has led to Uganda developing even closer relations with federal states like Saxony. Our cooperation with Saxony is focused among things on supporting the health sector. “We are grateful that this cooperation has brought tangible benefits to the people of Uganda as we can see today,” he added.</p>
+
+<p>He added that the machines are expected to work reliably and there are hopes of getting more machines as this collaboration gets further strengthened.</p>
+
+<p>By Catherine Nakabugo.</p>
+</div>
+
+
+<!-- POST 2 -->
+<div class="post">
+<img src="https://medicarehospital-mpigi.org/wp-content/uploads/2023/03/IMG_5DA85B3E2A3D-1-1200x800-1-280x180.jpeg">
+<h2>UGANDA LAUNCHES A 6 MONTHS POST EBOLA RECOVERY PLAN</h2>
+
+
+<p>The plan is aimed at strengthening and building all-inclusive health systems that will be instrumental in preventing future viral disease outbreaks</p>
+
+<p>Kampala – 8th February 2023; The Ministry of Health with support from several partners has anchored a post Ebola recovery plan to address the different gaps that were identified during the recent fight against Ebola.</p>
+
+<p>Last year on 20th September, the Ministry of Health declared an outbreak of Ebola in Uganda following a confirmation of a case in Mubende district. By 11th January this year, the outbreak had been declared over with a cumulative 142 confirmed cases and 55 deaths and a total of 9 districts were affected that include Mubende, Kassanda, Kyegegwa, Bunyangabu, Kagadi, Masaka, Kampala, Wakiso and Jinja.</p>
+
+<p>Following the post Ebola recovery plan, the Ministry of Health considered conducting solidarity vaccine trial activities under the World Health Organization(WHO) stewardship and other vaccine development activities, and this geared towards recovery and future prevention of the virus due to the fact that the Ebola virus re-emerging is still high.</p>
+
+<p>During the post Ebola recovery plan review meeting, the Minister of Health Dr. Jane Ruth Aceng Ocero said, the recovery plan builds on lessons learnt from the previous viral outbreaks, it is developed in line with WHO guidance and implemented under the support of the Ministry of Health and its partners. “Following after Ebola accountability forum by the Ministry and partners last month, it gave us a lot of information on what we need to do to put an end to epidemics.” she said.</p>
+
+<p>“Thank you for the support in controlling the Ebola outbreak in a record time of 69 days” Dr. Aceng said in appreciation of the technical and financial support given by all the partners.</p>
+
+<p>While presenting the post Ebola recovery plan, Dr. Solome Okware noted that WHO recommends a 180 days enhanced surveillance period following the end of a disease outbreak in a particular area.</p>
+
+<p>Priorities for implementation in this recovery plan were identified following what transpired from the accountability forum and several visits to the responding districts; surveillance is among the key priorities that were highlighted in the recovery plan.</p>
+
+<p>According to Dr. Aceng, there was a delay in the identification of Ebola and it occurred against the background of undetected deaths in communities. “The recovery plan therefore focuses on building effective surveillance capacity that can improve case detection and stimulate quick response.” she said.</p>
+
+<p>Dr. Aceng said Infection Prevention Control (IPC) was a huge problem during the outbreak due to the fact that many health workers got infected and this was because of poor infection and control methods in facilities. One of the priorities in the recovery plan includes case management which involves prevention and control in the virus infection.</p>
+
+<p>“Other key priorities considered in the recovery plan will draw in comprehensive support of survivors, strengthening laboratory systems in the country, and establishing a multi-disciplinary team of responders ready for deployment when emergencies occur in the country” Dr. Aceng said.</p>
+
+<p>The Ministry of Health and its partners like Ambassador of America Natalie Brown, Deputy Ambassador of Norway, United Nations Resident Coordinator Susan Ngongi Namondo, the WHO representative Yonas Tegegn Woldermariam and other officials from different organizations declared that there are already mobilized resources available to support the different components of the plan and they also agreed to jointly monitor the implementation plan and convene an accountability forum periodically.</p>
+
+<p>In the recovery plan, the overall budget for the implementation is Shs 120,250,608,091. Priority areas like supporting the pre-planned solidarity vaccine trial activities were allocated Shs. 4,053,441,800. And other priorities like the establishing of mobile field laboratories were allocated Shs 14,845,800,000.</p>
+
+<p>By Kanshabe Caroline.</p>
+</div>
+<div class="meta">March 9, 2023</div>
+
+<!-- POST 3 -->
+<div class="post">
+<img src="https://medicarehospital-mpigi.org/wp-content/uploads/2023/03/IMG-8089-1200x800-1-280x180.jpg">
+<h2>PUBLIC SENSITIZED ON CONDOM USE AHEAD OF INTERNATIONAL CONDOM DAY</h2>
+
+
+<p>Kampala – 9th February 2023; The Ministry of Health is partnering with the AIDS Healthcare Foundation (AHF) to mark the International Condom Day (ICD).</p>
+
+<p>This day is commemorated every 13th day of February annually with the aim of sensitizing the public on the importance of condoms, and highlighting its effectiveness in offering protection against HIV and other Sexually Transmitted Infections (STIs).</p>
+
+<p>International condom day is a global advocacy and awareness day that serves to promote the use of condoms as a means of preventing the spread of Sexually Transmitted Infections (STIs) including HIV and avoiding unintended pregnancies.</p>
+
+<p>“Between 25-29 years old youths, about 38% people do use condoms in Uganda today, and amongst women aged 24-25 years old, the condom use is too low and more than 8,000 girls got pregnant during COVID-19 lock down. We want to re-emphasize the importance of condom that it is currently one of the cheapest and affordable tools for prevention of HIV and other STIs and prevention of early pregnancies.” Said the AHF Project Coordinator Ms. Martha Mbabazi Ataye.</p>
+
+<p>The World Health Organization (WHO) stated that unprotected sexual intercourse between male and female is a predominant mode of HIV transmission amongst partners whose status is unknown.</p>
+
+<p>According to the Journal report of AHF, in Uganda, approximately 1.4 million people are living with HIV with 43% of new HIV infections occurring in our country which is alarming.</p>
+
+<p>The Country Programs Director, AHF Mr. Henry Magala said, “If we do the prevention we will not have 70% of the diseases that we have. According to the AIDS 8th review 2021, we had 53,000 new infections and sex accounts for 80% of the HIV infections and other STDs. If the above people had used condoms correctly and consistently, 42,000 new infections would have been averted if the programing was right and condoms available.”</p>
+
+<p>“In Uganda, according to our culture, sex is majorly started by men in that it is hard for a woman to have any desire of putting on a condom yet sex is chaired by men that is why the condom use is too low,” said Teddy Namala the Coordinator SAIL.</p>
+
+<p>The Senior Public Relations officer Ministry of Health Mr. Emmanuel Ainebyoona said that, “Previously, condoms used to be packed with guidelines on how to use them and visuals but it is no longer done of which most of the youths are first time users who don’t know how to use them. Dispensers and condom packaging should have an inscription on how to use these condoms and a demonstration.”</p>
+
+<p>The public was called upon to have a proper use of condoms and to make sure that both females and males should have condoms before having sex for better options in case one refuses to put it on. One should always be clean before putting on a condom to avoid infections and advised to trim not to shave when they are going to have sex because sometimes one can get a cut during shaving and end up having a wound which is a risk of getting an infection.</p>
+
+<p>The Condoms coordinator at the National AIDS control programme at the Ministry of Health, Vastha Kibirige, said that, ladies should teach their husband on how to use the female condom so that they can be of a proper use. And to also make practice before proper use.</p>
+
+<p>She encouraged distributers of condoms to always educate people on how to use them and to find out which community consumes more so that they distribute enough condoms.</p>
+
+<p>By Nakabugo Cathy.</p>
+<div class="meta">March 9, 2023</div>
+</div>
+
+
+<!-- POST 4 -->
+<div class="post">
+<img src="https://medicarehospital-mpigi.org/wp-content/uploads/2023/03/IMG_2680-1200x800-1-280x180.jpg">
+<h2>UGANDA LAUNCHES THE FIRST EVER NATIONAL COMMUNITY HEALTH STRATEGY</h2>
+
+
+<p>Kampala; 9 February 2023 – As part of the activities to mark the Community Health Week, the first ever National Community Health Strategy (NCHS) (2021/22 – 2025/26) was launched today by the Minister for Health, Dr. Jane Ruth Aceng Ocero at Speke Resort, Munyonyo. This strategy is anchored in the Parish Development Model and will ensure accessible services for all persons right from the grassroot level.</p>
+
+<p>The Government of Uganda is committed to improving community health and people’s livelihoods through the provision of basic health services in both rural and urban communities. Historically, improved community health has significantly contributed to improvement in Uganda’s health outcomes, in particular, attainment of Millennium Development Goal 4 which was concerned with the reduction of child mortality.</p>
+
+<p>“When communities are empowered, they can improve their own health, promote development and therefore economic growth” Dr. Aceng said while launching the strategy. The strategy will be implemented by the Village Health Teams and Community Health Workers.</p>
+
+<p>“There is a limit to volunteerism. People need to be motivated to do what they do. And it is not just about payment, it is also about being equipped” Dr. Aceng added.</p>
+
+<p>Dr. Charles Ayume, Chair of the Parliamentary Health Committee said “the NCHS plan clearly stipulates Community Health as an important prerequisite and emphasizes the importance of the health sector to engage in community-based preventive and promotive healthcare”</p>
+
+<p>While making commitments, Christine Namayanja, Country Director, Living Goods pledged to support the dissemination and implementation of the strategy upto the last mile. She added that the community health system will be strengthened through digitization, equipping, supervising and compensated community health workers.</p>
+
+<p>Andrew Musoke, Chair of the Country Coordinating Mechanism, Global Fund informed the audience that The Global Fund has committed $3.4M to piloting the Community Health Workers program in the four districts of; Kyotera, Kazo, Maracha and Amudat. He further pledged Global Fund’s support in implementing this strategy.</p>
+
+<p>The National Community Health Strategy costed at UGX 5 billion is an important tool in achieving Universal Health Coverage (UHC) including the targets made by the health sector under the Sustainable Development Goals.</p>
+
+<p>In order to drive progress towards UHC, the NCHS will leverage on the Community Health acceleration roadmap which identified the following priority areas:</p>
+
+<p>Service Delivery Health Workforce Information Systems Supply Chain Systems Health Financing Leadership and Governance</p>
+</div>
+<div class="meta">March 9, 2023</div>
+
+<!-- POST 5 -->
+<div class="post">
+<img src="https://medicarehospital-mpigi.org/wp-content/uploads/2023/03/PHOTO-2023-02-20-21-05-15-280x180.jpg">
+<h2>UCREEP UNDERGOES MID TERM REVIEW</h2>
+
+
+<p>Kampala – 20th February 2023; The Uganda COVID-19 Response and Emergency Preparedness Project (UCREEP) currently being implemented by the Ministry of Health is undergoing a three day midterm review with the aim of analyzing the progress and performance of the project.</p>
+
+<p>The project aims to prevent, detect and respond to COVID-19 and strengthen national systems for public health emergency and preparedness in Uganda.</p>
+
+<p>In response to the COVID-19 pandemic, the World Bank deployed over USD157 billion globally to support countries in their response to COVID-19.</p>
+
+<p>Subsequently, UCREEP was approved by the World Bank in July 2020 with the overall objective to strengthen the country’s national systems for public health emergency preparedness.</p>
+
+<p>Beyond the direct health impacts of COVID-19, delivery of other essential health services was adversely affected.</p>
+
+<p>According to a study by the World Bank, Uganda was one of the 18 countries where essential services suffered the most significant disruptions due to the pandemic.</p>
+
+<p>Speaking at the opening session of the meeting, the Permanent Secretary, Dr. Diana Atwine noted that the total project costs USD 195.5M of which USD 137.15M (93%) was offered as a grant by the World Bank.</p>
+
+<p>“This project is important in strengthening and building resilient health systems to respond promptly to epidemics and ensure continuity of services” she added.</p>
+
+<p>One of the key interventions in the COVID-19 response supported by the project was the introduction of mass vaccination against COVID-19.</p>
+
+<p>To-date, the Ministry of Health has acquired 8.9 million doses of COVID-19 vaccines through the Project; 6.9 million doses of Johnson and Johnson and 2 million doses of Sinopharm.</p>
+
+<p>This support realized at least 3.4 million people being vaccinated in the ongoing mass COVID-19 vaccination campaign.</p>
+
+<p>Dr. Atwine further informed that although the project registered a slow disbursement rate of 3% in the beginning, this improved to now 50% and will get better as activities are prioritized.</p>
+
+<p>Sighting the project’s involvement in the recent response to Ebola, Dr. Atwine noted that “deploying a mobile laboratory in Mubende improved the turnaround time, contact tracing and, surveillance.</p>
+
+<p>This was a magic bullet to curtail infection and emphasizing the role of laboratories in controlling infection.”</p>
+
+<p>The project rapidly deployed close to USD 3M to support activities on surveillance and contact tracing, laboratory, case management, purchase of health supplies including personal protective equipment and Real Star Ebola PCR testing kits and reagents for mobile laboratories; among others.</p>
+
+<p>This significantly boosted the country’s capacity to respond to the Ebola outbreak.</p>
+
+<p>The project is made up of five components including;</p>
+
+<p>Component 1: Case Detection, Confirmation, Contact tracing, Recording and Reporting</p>
+<p>Component 2: Strengthening Case Management and Psychosocial support</p>
+<p>Component 3: Project Management, Monitoring and Evaluation</p>
+<p>Component 4: Vaccines Acquisition and Deployment</p>
+<p>Component 5: Strengthening Continuity of Essential Health Services</p>
+
+<p>The four-year project will close on December 31, 2024.</p>
+<div class="meta">March 9, 2023</div>
+</div>
+
+</div>
+
+<div class="bottom-section">
+    <div class="bottom-content">
+
+        <!-- Logo + Name -->
+        <div class="bottom-brand">
+            <img src="logo.png" alt="logo">
+            <h2>Medicare Mpigi</h2>
+        </div>
+
+        <!-- Links -->
+        <div class="bottom-links">
+            <a href="#">Blog</a>
+            <a href="#">About</a>
+            <a href="#">FAQs</a>
+            <a href="#">Authors</a>
+            <a href="#">Events</a>
+            <a href="#">Shop</a>
+            <a href="#">Patterns</a>
+            <a href="#">Themes</a>
+        </div>
+
+    </div>
+</div>
+<footer>
+<p>© 2026 Medicare Mpigi | Clean Modern Health Platform</p>
+</footer>
+
+<!-- SCROLL + CHAT BUTTONS -->
+<div id="scroll-feedback">
+    <button id="scrollTopBtn" onclick="scrollToTop()">↑</button>
+    <button onclick="toggleChat()">💬</button>
+</div>
+
+<div id="chat-popup">
+    <h3>Send Feedback</h3>
+    <textarea placeholder="Write your feedback..." rows="4"></textarea>
+    <button onclick="submitFeedback()">Send</button>
+</div>
+
+<script>
+function toggleMenu(){
+    document.getElementById("menu").classList.toggle("active");
+}
+
+function scrollToTop(){
+    window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function toggleChat(){
+    const popup = document.getElementById("chat-popup");
+    popup.style.display = (popup.style.display === "block") ? "none" : "block";
+}
+
+function submitFeedback(){
+    const textarea = document.querySelector("#chat-popup textarea");
+    if(textarea.value.trim() !== ""){
+        alert("Thank you for your feedback!");
+        textarea.value = "";
+        document.getElementById("chat-popup").style.display = "none";
+    } else {
+        alert("Please enter some feedback first.");
+    }
+}
+
+// Show scroll-to-top only when scrolling down
+window.onscroll = function() {
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    if(document.body.scrollTop > 200 || document.documentElement.scrollTop > 200){
+        scrollBtn.style.display = "block";
+    } else {
+        scrollBtn.style.display = "none";
+    }
+};
+
+function toggleDarkMode(){
+    document.body.classList.toggle("dark-mode");
+
+    // save preference
+    if(document.body.classList.contains("dark-mode")){
+        localStorage.setItem("theme","dark");
+        document.getElementById("themeToggle").textContent = "☀️";
+    } else {
+        localStorage.setItem("theme","light");
+        document.getElementById("themeToggle").textContent = "🌙";
+    }
+}
+
+// load saved theme
+window.onload = function(){
+    if(localStorage.getItem("theme") === "dark"){
+        document.body.classList.add("dark-mode");
+        document.getElementById("themeToggle").textContent = "☀️";
+    }
+}
+</script>
+
+
+</body>
+</html>
